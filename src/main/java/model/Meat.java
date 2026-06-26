@@ -8,10 +8,4 @@ public class Meat extends Food {
         isVegetarian = false;
 
     }
-
-
-    @Override
-    public double priceDiscount() {
-        return price;
-    };
 }

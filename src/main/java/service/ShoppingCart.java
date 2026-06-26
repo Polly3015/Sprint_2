@@ -2,7 +2,7 @@ package service;
 import model.Food;
 
 public class ShoppingCart {
-    public Food[] cart;
+    private Food[] cart;
 
     public ShoppingCart(Food[] cart) {  // консруктор с одним параметром, массивом элементов Food
         this.cart = cart;
@@ -11,17 +11,21 @@ public class ShoppingCart {
     // получить общую сумму товаров в корзине без скидки,
     public double totalSum() {
         double total = 0.0;
-        for (int i = 0; i < cart.length; i++) {
-            total = total + (cart[i].getAmount() * cart[i].getPrice());
+        for (Food item : cart) {
+            total += item.getAmount() * item.getPrice();
         }
         return total;
     }
+        /*for (int i = 0; i < cart.length; i++) {
+            total += (cart[i].getAmount() * cart[i].getPrice());
+        }
+         */
 
     // получить общую сумму товаров в корзине со скидкой
     public double totalSumDiscount() {
         double total = 0.0;
-        for (int i = 0; i < cart.length; i++) {
-            total = total + (cart[i].getAmount() * cart[i].priceDiscount());
+        for (Food item : cart) {
+            total += (item.getAmount() * item.priceDiscount());
         }
         return total;
     }
@@ -30,9 +34,9 @@ public class ShoppingCart {
 
     public double totalSumVegatarian() {
         double total = 0.0;
-        for (int i = 0; i < cart.length; i++) {
-            if (cart[i].isVegetarian() == true) {
-                total = total + (cart[i].getAmount() * cart[i].getPrice());
+        for (Food item : cart) {
+            if (item.isVegetarian()) {
+                total += (item.getAmount() * item.getPrice());
             }
         }
         return total;
