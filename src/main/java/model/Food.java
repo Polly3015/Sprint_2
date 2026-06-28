@@ -1,6 +1,5 @@
 package model;
 
-import model.constants.Colour;
 import model.constants.Discount;
 
 public abstract class Food implements Discountable {
@@ -8,7 +7,6 @@ public abstract class Food implements Discountable {
     protected int amount;
     protected double price;
     protected boolean isVegetarian;
-    protected String colour;
 
     // геттеры
     public int getAmount() {
@@ -23,18 +21,11 @@ public abstract class Food implements Discountable {
         return isVegetarian;
     }
 
-    // использование метода из interface Discountable. Опредление наличия скидки
+    // использование метода из interface Discountable. Опредление наличия скидки. По умолчаниию 0.
     @Override
     public int getDiscount() {
-        return (Colour.RED.equals(colour)) ? Discount.DISCOUNT_RED_APPLE : 0;
-    }
-        /*
-        if (Colour.RED.equals(colour)) {
-            return Discount.DISCOUNT_RED_APPLE;
-        }
         return 0;
     }
-     */
 
     // Применение скидки на товар
     public double priceDiscount() {
